@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Wasi Ur Rehman</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="bg-animations">
+        <div class="circle circle-3"></div>
+    </div>
+
+    <nav>
+        <div class="logo">WASI<span>.</span></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="section-header">
+        <h2>Get In <span>Touch</span></h2>
+        <p>Have a project in mind? Let's discuss how we can bring your ideas to life with modern web development.</p>
+    </header>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Let's Talk</h3>
+            <p style="margin-bottom: 3rem; color: var(--text-muted); font-size: 1.1rem;">
+                I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+            </p>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <label
+                        style="font-size: 0.8rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px;">Email
+                        Me</label>
+                    <a href="mailto:wasiurrehman2001@gmail.com" style="text-decoration: none; color: inherit;">
+                        <p style="font-size: 1.1rem; font-weight: 500;">wasiurrehman2001@gmail.com</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <label
+                        style="font-size: 0.8rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px;">Call
+                        Me</label>
+                    <a href="tel:+923477143402" style="text-decoration: none; color: inherit;">
+                        <p style="font-size: 1.1rem; font-weight: 500;">+92 347 7143402</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <label
+                        style="font-size: 0.8rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px;">Location</label>
+                    <p style="font-size: 1.1rem; font-weight: 500;">Bhawalpur, Pakistan</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/xzdvoeew" method="POST">
+            <!-- Form Configuration -->
+            <input type="hidden" name="_subject" value="New Contact Form Submission!">
+
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="wasiurrehman2001@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-primary"
+                style="width: 100%; padding: 1.2rem; border-radius: 12px;">Send Message</button>
+            <div id="form-status" class="form-status"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+        const btn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loading state
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+            status.innerHTML = 'Connecting to server...';
+            status.className = 'form-status';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.innerHTML = '<i class="fas fa-check-circle"></i> Thanks! Your message has been sent successfully.';
+                    status.className = 'form-status success';
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.innerHTML = "Oops! Correlation failed. Please try again.";
+                    }
+                    status.className = 'form-status error';
+                }
+            } catch (error) {
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.className = 'form-status error';
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Send Message';
+            }
+        });
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">WASI<span>.</span></div>
+            <div class="social-links">
+                <a href="mailto:wasiurrehman2001@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/wasi-ur-rehmam-93998627b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/WasiUrRehman390" target="_blank" class="social-link"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/wasiurrahman2019/" target="_blank" class="social-link"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 Wasi Ur Rehman. All rights reserved. Designed with ❤️</p>
+        </div>
+    </footer>
+</body>
+
+</html>
