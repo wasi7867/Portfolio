@@ -899,4 +899,19 @@ footer {
     .skills-grid {
         grid-template-columns: 1fr;
     }
+
+    .skills-cta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .skills-cta .btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        text-align: center;
+    }
 }
