@@ -723,7 +723,7 @@ footer {
         left: auto;
         transform: none;
         order: 2;
-        margin-bottom: 2rem;
+        margin-bottom: 0.8rem;
     }
 
     .section-header h2 {
