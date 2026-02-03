@@ -16,11 +16,14 @@
 
     <nav>
         <div class="logo">WASI<span>.</span></div>
-        <ul>
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Work</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
 
     <header class="section-header">
@@ -155,6 +158,14 @@
             <p class="copyright">&copy; 2026 Wasi Ur Rehman. All rights reserved. Designed with ❤️</p>
         </div>
     </footer>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
