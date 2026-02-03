@@ -482,7 +482,15 @@ nav ul li a.active {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     font-size: 1.3rem;
+}
+
+.info-item div {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .contact-form {
@@ -727,10 +735,15 @@ footer {
     .contact-container {
         grid-template-columns: 1fr;
         gap: 3rem;
+        width: 100%;
+        overflow-x: hidden;
     }
 
     .contact-form {
         padding: 2rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
