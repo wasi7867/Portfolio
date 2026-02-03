@@ -657,26 +657,38 @@ footer {
     }
 
     nav ul {
-        display: flex;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 220px;
-        height: 100vh;
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 5%;
+        width: 180px;
         background: rgba(13, 6, 31, 0.98);
-        backdrop-filter: blur(25px);
+        backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 2rem 0;
-        gap: 3rem;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-        transition: var(--transition-base);
+        padding: 1.5rem 0;
+        gap: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         z-index: 1000;
+        animation: menuFadeIn 0.3s ease-out;
     }
 
     nav ul.active {
-        right: 0;
+        display: flex;
+    }
+
+    @keyframes menuFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .hero {
